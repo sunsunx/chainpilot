@@ -2,6 +2,7 @@ streamlit
 altair
 pandas
 mesa
+networkx
 langchain
 langchain-ollama
 langchain-text-splitters
