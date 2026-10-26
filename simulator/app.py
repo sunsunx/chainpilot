@@ -1,5 +1,12 @@
 from pathlib import Path
 import re
+import sys
+
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
 import altair as alt
 import streamlit as st
@@ -21,8 +28,6 @@ from simulator.data_queries import (
     build_data_context,
 )
 
-
-ROOT_DIR = Path(__file__).resolve().parents[1]
 
 SCENARIO_DIRS = {
     "baseline": ROOT_DIR / "data/demo_baseline_365",
