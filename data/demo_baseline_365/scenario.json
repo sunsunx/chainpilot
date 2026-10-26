@@ -1,0 +1,20 @@
+{
+  "name": "baseline",
+  "demand_multiplier": 1.0,
+  "demand_cv": 0.1,
+  "spike_probability": 0.005,
+  "spike_min": 20,
+  "spike_max": 60,
+  "international_leadtime_multiplier": 1.0,
+  "domestic_leadtime_multiplier": 1.0,
+  "supplier_capacity_factor": 1.0,
+  "hub_to_dc_capacity_factor": 1.0,
+  "dc_to_cu_capacity_factor": 1.0,
+  "disruption_start": null,
+  "disruption_end": null,
+  "disruption_capacity_factor": 1.0,
+  "production_leadtime_multiplier": 1.0,
+  "wafer_fab_min_days": 84,
+  "wafer_fab_max_days": 140,
+  "packaging_test_days": 42
+}

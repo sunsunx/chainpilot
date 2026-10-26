@@ -1,0 +1,2 @@
+scenario,decision_mode,llm_provider,llm_model,days,total_demand,final_cu_backlog,final_fulfilment_rate_to_date,mean_dc_inv,total_shipped_to_market,cml_production_cost,cml_transport_cost,cml_holding_cost,cml_backlog_cost,cml_nego_premium_cost,cml_production_priority_cost,cml_total_cost,cost_per_unit_demand
+geopolitical,rule_based_bdi,none,,365,50615,31110,0.3853600711251605,331.84383561643835,19505,343980.0,62743.409999999836,185309.0200000001,22757228.0,0.0,0.0,23349260.43,461.31108228785934

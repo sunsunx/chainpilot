@@ -1,0 +1,10 @@
+Supplier Lead-Time Policy
+
+When a supplier lead time increases by more than 20 percent,
+the planner should review the safety-stock level, confirm the
+new lead-time commitment, and evaluate an alternate supplier
+or transportation mode.
+
+A lead-time risk should be escalated when the delay creates
+less than seven days of supply at the regional distribution center.
+

@@ -1,0 +1,2 @@
+scenario,decision_mode,llm_provider,llm_model,days,total_demand,final_cu_backlog,final_fulfilment_rate_to_date,mean_dc_inv,total_shipped_to_market,cml_production_cost,cml_transport_cost,cml_holding_cost,cml_backlog_cost,cml_nego_premium_cost,cml_production_priority_cost,cml_total_cost,cost_per_unit_demand
+baseline,rule_based_bdi,none,,365,44022,0,1.0,2998.5753424657532,44022,671760.0,99398.30000000006,155091.6999999999,0.0,0.0,0.0,926250.0,21.04061605560856

@@ -1,0 +1,7 @@
+Safety Stock Policy
+
+Safety stock should reflect demand variability, supplier lead-time
+variability and the required customer service level.
+
+When demand or lead-time variability increases, the planner should
+review the safety-stock assumption instead of increasing inventory automatically.

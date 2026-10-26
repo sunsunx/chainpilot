@@ -1,0 +1,7 @@
+streamlit
+altair
+pandas
+mesa
+langchain
+langchain-ollama
+langchain-text-splitters

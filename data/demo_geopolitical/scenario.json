@@ -1,0 +1,20 @@
+{
+  "name": "geopolitical",
+  "demand_multiplier": 1.12,
+  "demand_cv": 0.18,
+  "spike_probability": 0.02,
+  "spike_min": 60,
+  "spike_max": 160,
+  "international_leadtime_multiplier": 3.2,
+  "domestic_leadtime_multiplier": 1.2,
+  "supplier_capacity_factor": 0.7,
+  "hub_to_dc_capacity_factor": 0.22,
+  "dc_to_cu_capacity_factor": 0.9,
+  "disruption_start": 60,
+  "disruption_end": 260,
+  "disruption_capacity_factor": 0.35,
+  "production_leadtime_multiplier": 1.1,
+  "wafer_fab_min_days": 84,
+  "wafer_fab_max_days": 140,
+  "packaging_test_days": 42
+}

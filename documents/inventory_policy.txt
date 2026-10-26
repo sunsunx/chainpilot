@@ -1,0 +1,8 @@
+Inventory Planning Policy
+
+The regional distribution center should normally maintain at least
+seven days of supply for expected customer demand.
+
+When days of supply fall below seven days, the planner should review
+inbound shipments, supplier capacity, transportation options and
+customer backlog before changing the replenishment plan.

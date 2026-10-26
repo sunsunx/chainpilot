@@ -1,0 +1,9 @@
+Procurement Policy
+
+When a supplier creates a confirmed backlog, the planner should
+review the purchase order, confirm the revised promise date,
+and evaluate an alternate supplier if the delay affects customer demand.
+
+Expedited transportation may be considered when service risk is high,
+but the planner should compare the additional transport cost with
+the cost of customer backlog.
