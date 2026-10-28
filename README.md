@@ -29,7 +29,7 @@ The assistant can answer data questions and policy questions.
 - Transport-cost analysis
 - Streamlit web app
 - LangChain RAG
-- Local Ollama LLM
+- Optional local Ollama LLM
 - English and Traditional Chinese questions
 
 ## How the assistant works
@@ -104,7 +104,10 @@ ollama pull llama3.2:3b
 ollama pull nomic-embed-text
 ```
 
-Run this command only if Ollama is not already running:
+Ollama is not required for the online demo.
+The full local RAG pipeline uses Ollama for document search and answer generation.
+
+Run this command only if Ollama is not already running locally:
 
 ```bash
 ollama serve
@@ -120,51 +123,35 @@ python3 -m streamlit run simulator/app.py
 
 Open the local URL shown in Terminal.
 
-## Data question examples
+## How to use Ask ChainPilot
 
-```text
-What is the latest US distribution center inventory?
-```
+1. Select a scenario:
+   - `baseline`
+   - `geopolitical`
+2. Enter a question in the `Ask ChainPilot` box.
+3. Click `Ask AI`.
+4. Read the answer and the source files.
 
-```text
-What is the average lead time for each route?
-```
+The selected scenario changes simulation data and risk results.
+For example, inventory, backlog, service rate, and transport cost can change between scenarios.
 
-```text
-Which route has the highest total transport cost?
-```
+### Example questions
 
-```text
-Which route has the highest average transport cost per shipment?
-```
+Data questions:
 
-Chinese examples:
+- What is the latest US distribution center inventory?
+- What is the average lead time for each route?
+- Which route has the highest transport cost?
 
-```text
-目前庫存是多少？
-```
+Policy questions:
 
-```text
-每條運輸路線的平均交期是多少？
-```
+- How should we respond to a longer delivery time?
+- What should we do when stock covers less than 7 days?
+- When should we use fast transport?
+- How should we set safety stock?
 
-## Policy question examples
-
-```text
-How should we set safety stock?
-```
-
-```text
-What should we do when supplier lead time increases?
-```
-
-```text
-What should we do when stock covers less than seven days?
-```
-
-```text
-When should we use fast transport?
-```
+The online demo supports data questions and common policy questions.
+The full LangChain RAG pipeline is available when the app runs locally with Ollama.
 
 ## Run the simulation
 
