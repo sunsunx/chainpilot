@@ -148,39 +148,7 @@ if st.button("Ask AI"):
 
                 if policy_answer is not None:
                     answer = policy_answer
-
-                    question_lower = question.lower()
-
-                    if "安全庫存" in question or "safety stock" in question_lower:
-                        sources = ["safety_stock_policy.txt"]
-                    elif (
-                        "快速運輸" in question
-                        or "快運" in question
-                        or "fast transport" in question_lower
-                        or "expedited transport" in question_lower
-                        or "faster transport" in question_lower
-                    ):
-                        sources = ["procurement_policy.txt"]
-                    elif "交期" in question and (
-                        "變長" in question or "增加" in question
-                    ) or (
-                        ("delivery time" in question_lower or "lead time" in question_lower)
-                        and any(
-                            word in question_lower
-                            for word in ("longer", "increase", "increases", "increased")
-                        )
-                    ):
-                        sources = ["supplier_lead_time_policy.txt"]
-                    elif (
-                        "七天" in question
-                        or "7天" in question
-                        or "7 天" in question
-                        or "less than 7" in question_lower
-                        or "below 7" in question_lower
-                    ):
-                        sources = ["inventory_policy.txt"]
-                    else:
-                        sources = ["policy_documents"]
+                    sources = ["Built-in policy fallback"]
                 else:
                     data_context = build_data_context(
                         daily_records,
