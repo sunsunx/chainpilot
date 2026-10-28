@@ -250,6 +250,64 @@ def answer_chinese_policy_question(question: str) -> str | None:
     return None
 
 
+def answer_policy_question(question: str) -> str | None:
+    """Answer common policy questions without requiring a local LLM."""
+
+    chinese_answer = answer_chinese_policy_question(question)
+    if chinese_answer is not None:
+        return chinese_answer
+
+    question_lower = question.lower()
+
+    if (
+        ("delivery time" in question_lower or "lead time" in question_lower)
+        and any(
+            word in question_lower
+            for word in ("longer", "increase", "increases", "increased")
+        )
+    ):
+        return (
+            "When supplier delivery time increases:\n\n"
+            "1. Review the safety-stock level.\n"
+            "2. Confirm the new delivery-time commitment with the supplier.\n"
+            "3. Evaluate another supplier or transport mode."
+        )
+
+    if (
+        ("stock" in question_lower or "inventory" in question_lower)
+        and ("less than 7" in question_lower or "below 7" in question_lower)
+    ):
+        return (
+            "When stock covers less than seven days:\n\n"
+            "1. Review inbound shipments.\n"
+            "2. Confirm supplier capacity.\n"
+            "3. Review transport options and customer backlog."
+        )
+
+    if (
+        "fast transport" in question_lower
+        or "expedited transport" in question_lower
+        or "faster transport" in question_lower
+    ):
+        return (
+            "Use fast transport when service risk is high.\n\n"
+            "1. Check the effect of the delay on customers.\n"
+            "2. Compare the extra transport cost with the backlog cost.\n"
+            "3. Review other suppliers or transport modes."
+        )
+
+    if "safety stock" in question_lower:
+        return (
+            "Set safety stock based on demand variation, delivery-time variation, "
+            "and the required service level.\n\n"
+            "1. Review demand variation.\n"
+            "2. Review delivery-time variation.\n"
+            "3. Do not increase inventory without analysis."
+        )
+
+    return None
+
+
 def build_data_context(
     daily_records: pd.DataFrame,
     shipments: pd.DataFrame,

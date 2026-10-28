@@ -25,6 +25,7 @@ from simulator.langchain_rag import answer_question
 from simulator.data_queries import (
     answer_chinese_policy_question,
     answer_data_question,
+    answer_policy_question,
     build_data_context,
 )
 
@@ -143,20 +144,40 @@ if st.button("Ask AI"):
                 answer = data_answer
                 sources = ["simulation_data.csv"]
             else:
-                policy_answer = answer_chinese_policy_question(question)
+                policy_answer = answer_policy_question(question)
 
                 if policy_answer is not None:
                     answer = policy_answer
 
-                    if "安全庫存" in question:
+                    question_lower = question.lower()
+
+                    if "安全庫存" in question or "safety stock" in question_lower:
                         sources = ["safety_stock_policy.txt"]
-                    elif "快速運輸" in question or "快運" in question:
+                    elif (
+                        "快速運輸" in question
+                        or "快運" in question
+                        or "fast transport" in question_lower
+                        or "expedited transport" in question_lower
+                        or "faster transport" in question_lower
+                    ):
                         sources = ["procurement_policy.txt"]
                     elif "交期" in question and (
                         "變長" in question or "增加" in question
+                    ) or (
+                        ("delivery time" in question_lower or "lead time" in question_lower)
+                        and any(
+                            word in question_lower
+                            for word in ("longer", "increase", "increases", "increased")
+                        )
                     ):
                         sources = ["supplier_lead_time_policy.txt"]
-                    elif "七天" in question or "7天" in question or "7 天" in question:
+                    elif (
+                        "七天" in question
+                        or "7天" in question
+                        or "7 天" in question
+                        or "less than 7" in question_lower
+                        or "below 7" in question_lower
+                    ):
                         sources = ["inventory_policy.txt"]
                     else:
                         sources = ["policy_documents"]
@@ -165,10 +186,18 @@ if st.button("Ask AI"):
                         daily_records,
                         shipments,
                     )
-                    answer, sources = answer_question(
-                        question,
-                        data_context=data_context,
-                    )
+                    try:
+                        answer, sources = answer_question(
+                            question,
+                            data_context=data_context,
+                        )
+                    except Exception:
+                        answer = (
+                            "The online demo cannot connect to the local Ollama model. "
+                            "Try one of the suggested questions or run the app locally "
+                            "with Ollama enabled."
+                        )
+                        sources = []
 
                     has_thai = any(
                         "\u0e00" <= character <= "\u0e7f"
